@@ -23,11 +23,12 @@ This project demonstrates the following Go features and libraries:
     *   `context` for managing request-scoped values, cancellation signals, and deadlines
 
 *   **External Libraries:**
-    *   [Gin](https://github.com/gin-gonic/gin): A popular and performant web framework.
+    *   [logrus](https://github.com/sirupsen/logrus): For structured logging.
+    *   [viper](https://github.com/spf13/viper): For configuration management.
+    *   [Gin](https://github.com/gin-gonic/gin): A popular web framework.
     *   [GORM](https://gorm.io/): A developer-friendly ORM for Go.
-    *   [logrus](https://github.com/sirupsen/logrus): For structured, pluggable logging.
-    *   [viper](https://github.com/spf13/viper): For application configuration management.
-    *   [SQLite](https://www.sqlite.org/): A self-contained, serverless, zero-configuration, transactional SQL database engine.
+    *   [SQLite](https://www.sqlite.org/): A C-language library that implements a small, fast, self-contained, high-reliability, full-featured, SQL database engine.
+    *   [stretchr/testify](https://github.com/stretchr/testify): For testing utilities.
 
 ## Getting Started
 
@@ -51,50 +52,56 @@ This project demonstrates the following Go features and libraries:
 
 ### Configuration
 
-The application is configured using a `config.yml` file. You can copy the provided `config.example.yml` to `config.yml` and modify it to your needs.
-
-The following configuration values are available:
+The application is configured using a `config.yml` file. The following configuration values are available:
 
 *   `greeting`: The greeting message to use in the application.
 *   `log_level`: The logging level. Can be one of `trace`, `debug`, `info`, `warn`, `error`, `fatal`, `panic`.
 
-### Running the Application
+## Building and Running
 
 This project uses a `Makefile` to provide convenient commands for common operations.
 
-To start the web server, run the following command:
+### Running the application
+
+To run the program, execute the following command in your terminal:
 
 ```sh
 make run
 ```
-You can use a tool like `curl` or Postman to interact with the API. For example:
-To format the code according to Go standards, run:
+
+This will start the web server with graceful shutdown.
+
+Alternatively, you can use the standard `go run` command:
 
 ```sh
-make fmt
+go run main.go
 ```
 
-### Linting
+### Building the application
 
-This project uses `golangci-lint` for linting. To run the linter, use the following command:
+To build the application binary, use the following command:
 
 ```sh
-make lint
+make build
 ```
 
-### Testing
+This will create an executable file named `go-features-showcase` in the root directory.
 
-To run the tests, use the following command:
+### Running the demo
+
+To run a demonstration of the application's functionality, use the following command:
 
 ```sh
-make test
+make demo
 ```
 
-## Docker
+This will start the server, make a request to the `/people` endpoint, and then stop the server.
+
+### Running with Docker
 
 You can also build and run the application using Docker.
 
-### Building the Docker image
+#### Building the Docker image
 
 To build the Docker image, run the following command:
 
@@ -102,10 +109,51 @@ To build the Docker image, run the following command:
 docker build -t go-features-showcase .
 ```
 
-### Running the Docker container
+#### Running the Docker container
 
 To run the Docker container, run the following command:
 
 ```sh
 docker run -p 8080:8080 go-features-showcase
 ```
+
+# Development Conventions
+
+The code in this project follows standard Go formatting, linting, and testing practices.
+
+## Formatting
+
+You can format the code using the following command:
+
+```sh
+make fmt
+```
+
+This uses `gofumpt` for stricter formatting.
+
+## Linting
+
+This project uses `golangci-lint` for linting. To run the linter, use the following command:
+
+```sh
+make lint
+```
+
+## Testing
+
+To run the tests, use the following command:
+
+```sh
+make test
+```
+
+# API Endpoints
+
+The server provides the following endpoints for managing people:
+
+*   `GET /people`: Get all people.
+*   `POST /people`: Create a new person.
+*   `GET /people/:id`: Get a person by ID.
+*   `PUT /people/:id`: Update a person by ID.
+*   `DELETE /people/:id`: Delete a person by ID.
+
