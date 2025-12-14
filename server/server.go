@@ -1,12 +1,13 @@
 package server
 
 import (
+	"net/http"
+
 	"github.com/gin-gonic/gin"
 	log "github.com/sirupsen/logrus"
 	"go-features-showcase/features"
 	"gorm.io/driver/sqlite"
 	"gorm.io/gorm"
-	"net/http"
 )
 
 type Server struct {
@@ -20,7 +21,10 @@ func NewServer() *Server {
 	}
 
 	// Migrate the schema
-	db.AutoMigrate(&features.Person{})
+	err = db.AutoMigrate(&features.Person{})
+	if err != nil {
+		log.Fatalf("failed to migrate database: %v", err)
+	}
 
 	return &Server{db: db}
 }
@@ -34,7 +38,9 @@ func (s *Server) Run() {
 	r.PUT("/people/:id", s.UpdatePerson)
 	r.DELETE("/people/:id", s.DeletePerson)
 
-	r.Run()
+	if err := r.Run(); err != nil {
+		log.Error("Error:", err)
+	}
 }
 
 func (s *Server) GetPeople(c *gin.Context) {

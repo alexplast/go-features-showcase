@@ -2,46 +2,47 @@ package features
 
 import (
 	"encoding/json"
+	"math"
+
 	log "github.com/sirupsen/logrus"
 	"github.com/spf13/viper"
 	"gorm.io/gorm"
-	"math"
 )
 
-// Struct to represent a Person
+// Struct to represent a Person.
 type Person struct {
 	gorm.Model
 	Name string `json:"name"`
 	Age  int    `json:"age"`
 }
 
-// Method for the Person struct
+// Method for the Person struct.
 func (p Person) Greet() {
 	greeting := viper.GetString("greeting")
 	log.Infof("%s My name is %s and I am %d years old.", greeting, p.Name, p.Age)
 }
 
-// Interface for shapes
+// Interface for shapes.
 type Shaper interface {
 	Area() float64
 }
 
-// Struct for a Circle
+// Struct for a Circle.
 type Circle struct {
 	Radius float64
 }
 
-// Method for Circle to implement the Shaper interface
+// Method for Circle to implement the Shaper interface.
 func (c Circle) Area() float64 {
 	return math.Pi * c.Radius * c.Radius
 }
 
-// Struct for a Rectangle
+// Struct for a Rectangle.
 type Rectangle struct {
 	Width, Height float64
 }
 
-// Method for Rectangle to implement the Shaper interface
+// Method for Rectangle to implement the Shaper interface.
 func (r Rectangle) Area() float64 {
 	return r.Width * r.Height
 }
@@ -64,7 +65,11 @@ func DemonstrateStructsAndInterfaces() {
 func DemonstrateJSON() {
 	log.Info("\n--- JSON Marshaling ---")
 	p := Person{Name: "John", Age: 30}
-	personJSON, _ := json.Marshal(p)
+	personJSON, err := json.Marshal(p)
+	if err != nil {
+		log.Error("Error:", err)
+		return
+	}
 	log.Info("Person as JSON:", string(personJSON))
 }
 

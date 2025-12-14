@@ -1,0 +1,52 @@
+run:
+  timeout: 10m
+
+linters:
+  enable-all: true
+  disable:
+    - exhaustivestruct
+    - golint
+    - interfacer
+    - maligned
+    - scopelint
+    - testpackage
+    - gochecknoinits
+    - gocritic
+    - gocyclo
+    - godox
+    - goerr113
+    - gosec
+    - lll
+    - nestif
+    - paralleltest
+    - wsl
+    - nlreturn
+    - exhaustruct
+    - funlen
+    - gomnd
+    - goconst
+    - gochecknoglobals
+    - dupl
+    - prealloc
+    - bodyclose
+    - stylecheck
+    - revive
+    - depguard # I will enable this later
+    - varnamelen
+    - mnd
+    - intrange
+
+linters-settings:
+  govet:
+    check-shadowing: true
+  shadow:
+    strict: true
+  gofmt:
+    simplify: true
+  goimports:
+    local-prefixes: go-features-showcase
+
+issues:
+  exclude-use-default: false
+  max-issues-per-linter: 0
+  max-same-issues: 0

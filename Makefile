@@ -1,4 +1,4 @@
-.PHONY: run build fmt server
+.PHONY: run build fmt server test lint demo
 
 run: server
 
@@ -9,4 +9,13 @@ build:
 	go build -o go-features-showcase main.go
 
 fmt:
-	go fmt ./...
+	gofumpt -w .
+
+test:
+	go test ./...
+
+lint:
+	golangci-lint run
+
+demo:
+	./demo.sh

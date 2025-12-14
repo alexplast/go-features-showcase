@@ -2,11 +2,12 @@ package features
 
 import (
 	"errors"
-	log "github.com/sirupsen/logrus"
 	"strings"
+
+	log "github.com/sirupsen/logrus"
 )
 
-// Function that demonstrates error handling
+// Function that demonstrates error handling.
 func Divide(a, b float64) (float64, error) {
 	if b == 0 {
 		return 0, errors.New("cannot divide by zero")
@@ -31,7 +32,7 @@ func DemonstrateErrorHandling() {
 	}
 }
 
-// Function to demonstrate the defer statement
+// Function to demonstrate the defer statement.
 func DemonstrateDefer() {
 	defer log.Info("\nThis will be printed last.")
 	log.Info("\nThis will be printed first.")

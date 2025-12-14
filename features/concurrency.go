@@ -2,19 +2,20 @@ package features
 
 import (
 	"context"
-	log "github.com/sirupsen/logrus"
 	"sync"
 	"time"
+
+	log "github.com/sirupsen/logrus"
 )
 
-// Function that demonstrates goroutines and channels
+// Function that demonstrates goroutines and channels.
 func LongRunningTask(c chan string) {
 	log.Info("Long running task started...")
 	time.Sleep(2 * time.Second)
 	c <- "Long running task finished!"
 }
 
-// Function to demonstrate the select statement
+// Function to demonstrate the select statement.
 func DemonstrateSelect() {
 	log.Info("\n--- Select ---")
 	c1 := make(chan string)
@@ -29,7 +30,7 @@ func DemonstrateSelect() {
 		c2 <- "two"
 	}()
 
-	for i := 0; i < 2; i++ {
+	for range 2 {
 		select {
 		case msg1 := <-c1:
 			log.Info("received", msg1)
@@ -64,7 +65,7 @@ func (c *SafeCounter) Value(key string) int {
 func DemonstrateMutex() {
 	log.Info("\n--- Mutex ---")
 	c := SafeCounter{v: make(map[string]int)}
-	for i := 0; i < 1000; i++ {
+	for range 1000 {
 		go c.Inc("somekey")
 	}
 
