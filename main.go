@@ -2,8 +2,8 @@ package main
 
 import (
 	log "github.com/sirupsen/logrus"
-	"go-hello-world/features"
-	"go-hello-world/server"
+	"go-features-showcase/features"
+	"go-features-showcase/server"
 )
 
 func main() {

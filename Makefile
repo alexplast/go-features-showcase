@@ -6,7 +6,7 @@ server:
 	go run main.go
 
 build:
-	go build -o go-hello-world main.go
+	go build -o go-features-showcase main.go
 
 fmt:
 	go fmt ./...

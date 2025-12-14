@@ -40,8 +40,8 @@ This project demonstrates the following Go features and libraries:
 
 1.  Clone the repository:
     ```sh
-    git clone https://github.com/your-username/go-hello-world.git
-    cd go-hello-world
+    git clone https://github.com/your-username/go-features-showcase.git
+    cd go-features-showcase
     ```
 
 2.  Install the dependencies:
@@ -101,7 +101,7 @@ To build the application binary, use the following command:
 make build
 ```
 
-This will create an executable file named `go-hello-world` in the root directory.
+This will create an executable file named `go-features-showcase` in the root directory.
 
 ### Formatting
 

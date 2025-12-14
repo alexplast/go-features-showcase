@@ -3,7 +3,7 @@ package server
 import (
 	"github.com/gin-gonic/gin"
 	log "github.com/sirupsen/logrus"
-	"go-hello-world/features"
+	"go-features-showcase/features"
 	"gorm.io/driver/sqlite"
 	"gorm.io/gorm"
 	"net/http"

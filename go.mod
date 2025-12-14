@@ -1,4 +1,4 @@
-module go-hello-world
+module go-features-showcase
 
 go 1.25.5
 

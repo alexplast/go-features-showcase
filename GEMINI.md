@@ -44,7 +44,7 @@ To build the application binary, use the following command:
 make build
 ```
 
-This will create an executable file named `go-hello-world` in the root directory.
+This will create an executable file named `go-features-showcase` in the root directory.
 
 # Development Conventions
 
