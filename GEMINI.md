@@ -9,12 +9,14 @@ This project uses the following external libraries:
 *   [Gin](https://github.com/gin-gonic/gin): A popular web framework.
 *   [GORM](https://gorm.io/): A developer-friendly ORM for Go.
 *   [SQLite](https://www.sqlite.org/): A C-language library that implements a small, fast, self-contained, high-reliability, full-featured, SQL database engine.
+*   [stretchr/testify](https://github.com/stretchr/testify): For testing utilities.
 
 # Configuration
 
 The application is configured using a `config.yml` file. The following configuration values are available:
 
 *   `greeting`: The greeting message to use in the application.
+*   `log_level`: The logging level. Can be one of `trace`, `debug`, `info`, `warn`, `error`, `fatal`, `panic`.
 
 # Building and Running
 
@@ -28,7 +30,7 @@ To run the program, execute the following command in your terminal:
 make run
 ```
 
-This will start the web server.
+This will start the web server with graceful shutdown.
 
 Alternatively, you can use the standard `go run` command:
 
@@ -46,12 +48,64 @@ make build
 
 This will create an executable file named `go-features-showcase` in the root directory.
 
+## Running the demo
+
+To run a demonstration of the application's functionality, use the following command:
+
+```sh
+make demo
+```
+
+This will start the server, make a request to the `/people` endpoint, and then stop the server.
+
+## Running with Docker
+
+You can also build and run the application using Docker.
+
+### Building the Docker image
+
+To build the Docker image, run the following command:
+
+```sh
+docker build -t go-features-showcase .
+```
+
+### Running the Docker container
+
+To run the Docker container, run the following command:
+
+```sh
+docker run -p 8080:8080 go-features-showcase
+```
+
 # Development Conventions
 
-The code in this project follows standard Go formatting. You can format the code using the following command:
+The code in this project follows standard Go formatting, linting, and testing practices.
+
+## Formatting
+
+You can format the code using the following command:
 
 ```sh
 make fmt
+```
+
+This uses `gofumpt` for stricter formatting.
+
+## Linting
+
+This project uses `golangci-lint` for linting. To run the linter, use the following command:
+
+```sh
+make lint
+```
+
+## Testing
+
+To run the tests, use the following command:
+
+```sh
+make test
 ```
 
 # API Endpoints
