@@ -1,29 +1,14 @@
 # Project Overview
 
-This project is a Go application designed to demonstrate a wide variety of features of the Go programming language. The code is organized into a `main` package and a `features` package, which contains the demonstration functions.
+This project is a Go application designed to demonstrate a wide variety of features of the Go programming language. The code is organized into a `main` package, a `features` package which contains many feature demonstrations, and a `server` package which contains a simple REST API.
 
 This project uses the following external libraries:
 
 *   [logrus](https://github.com/sirupsen/logrus): For structured logging.
 *   [viper](https://github.com/spf13/viper): For configuration management.
-
-The demonstrated features include:
-
-*   Structs and Methods
-*   Interfaces
-*   Goroutines and Channels
-*   JSON Marshaling
-*   Error Handling
-*   The `defer` statement
-*   Slices
-*   Maps
-*   Pointers
-*   The `select` statement
-*   `sync.Mutex` for thread safety
-*   String manipulation
-*   File I/O
-*   `context` for cancellation
-*   `net/http` for making HTTP requests
+*   [Gin](https://github.com/gin-gonic/gin): A popular web framework.
+*   [GORM](https://gorm.io/): A developer-friendly ORM for Go.
+*   [SQLite](https://www.sqlite.org/): A C-language library that implements a small, fast, self-contained, high-reliability, full-featured, SQL database engine.
 
 # Configuration
 
@@ -42,6 +27,8 @@ To run the program, execute the following command in your terminal:
 ```sh
 make run
 ```
+
+This will start the web server.
 
 Alternatively, you can use the standard `go run` command:
 
@@ -66,3 +53,13 @@ The code in this project follows standard Go formatting. You can format the code
 ```sh
 make fmt
 ```
+
+# API Endpoints
+
+The server provides the following endpoints for managing people:
+
+*   `GET /people`: Get all people.
+*   `POST /people`: Create a new person.
+*   `GET /people/:id`: Get a person by ID.
+*   `PUT /people/:id`: Update a person by ID.
+*   `DELETE /people/:id`: Delete a person by ID.

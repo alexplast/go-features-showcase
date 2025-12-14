@@ -1,0 +1,10 @@
+# Binaries
+go-hello-world
+
+# Databases
+test.db
+
+# IDE files
+.idea
+*.iml
+.vscode

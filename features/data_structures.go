@@ -4,11 +4,13 @@ import (
 	"encoding/json"
 	log "github.com/sirupsen/logrus"
 	"github.com/spf13/viper"
+	"gorm.io/gorm"
 	"math"
 )
 
 // Struct to represent a Person
 type Person struct {
+	gorm.Model
 	Name string `json:"name"`
 	Age  int    `json:"age"`
 }

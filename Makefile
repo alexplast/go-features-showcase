@@ -1,6 +1,8 @@
-.PHONY: run build fmt
+.PHONY: run build fmt server
 
-run:
+run: server
+
+server:
 	go run main.go
 
 build:
