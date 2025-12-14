@@ -5,6 +5,7 @@ import (
 	"net/http"
 	"os"
 	"os/signal"
+	"strconv"
 	"time"
 
 	"github.com/gin-gonic/gin"
@@ -72,8 +73,46 @@ func (s *Server) Run() {
 
 func (s *Server) GetPeople(c *gin.Context) {
 	var people []features.Person
-	s.db.Find(&people)
-	c.JSON(http.StatusOK, people)
+
+	// Create a new query builder from the database model
+	query := s.db.Model(&features.Person{})
+
+	// Filtering by name, if the query parameter is present
+	if name := c.Query("name"); name != "" {
+		query = query.Where("name LIKE ?", "%"+name+"%")
+	}
+
+	// Pagination parameters
+	page, err := strconv.Atoi(c.DefaultQuery("page", "1"))
+	if err != nil || page < 1 {
+		page = 1
+	}
+
+	limit, err := strconv.Atoi(c.DefaultQuery("limit", "10"))
+	if err != nil || limit <= 0 {
+		limit = 10
+	}
+
+	offset := (page - 1) * limit
+
+	// Get total count of records that match the filter
+	var total int64
+	query.Count(&total)
+
+	// Apply pagination and retrieve the records
+	err = query.Offset(offset).Limit(limit).Find(&people).Error
+	if err != nil {
+		c.JSON(http.StatusInternalServerError, gin.H{"error": "Failed to retrieve people"})
+		return
+	}
+
+	// Return paginated data along with metadata
+	c.JSON(http.StatusOK, gin.H{
+		"data":  people,
+		"total": total,
+		"page":  page,
+		"limit": limit,
+	})
 }
 
 func (s *Server) CreatePerson(c *gin.Context) {

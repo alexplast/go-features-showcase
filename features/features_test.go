@@ -40,7 +40,7 @@ func TestDemonstrateMutex(t *testing.T) {
 }
 
 func TestDemonstrateContext(t *testing.T) {
-	ctx, cancel := context.WithTimeout(context.Background(), 1*time.Second)
+	ctx, cancel := context.WithTimeout(t.Context(), 1*time.Second)
 	defer cancel()
 	DemonstrateContext(ctx)
 }
@@ -55,7 +55,7 @@ func TestDemonstrateDefer(t *testing.T) {
 
 func TestInitConfig(t *testing.T) {
 	t.Cleanup(func() {
-		os.Remove("config.yml")
+		_ = os.Remove("config.yml")
 	})
 	// Create a dummy config file
 	f, err := os.Create("config.yml")
@@ -66,7 +66,7 @@ func TestInitConfig(t *testing.T) {
 	if err != nil {
 		t.Fatal(err)
 	}
-	f.Close()
+	_ = f.Close()
 
 	InitConfig()
 }
