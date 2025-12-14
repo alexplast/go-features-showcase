@@ -1,2 +1,3 @@
 # config.yml
 greeting: "Hello from Viper!"
+log_level: "info"

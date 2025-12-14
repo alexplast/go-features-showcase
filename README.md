@@ -56,6 +56,7 @@ The application is configured using a `config.yml` file. You can copy the provid
 The following configuration values are available:
 
 *   `greeting`: The greeting message to use in the application.
+*   `log_level`: The logging level. Can be one of `trace`, `debug`, `info`, `warn`, `error`, `fatal`, `panic`.
 
 ### Running the Application
 
@@ -66,47 +67,45 @@ To start the web server, run the following command:
 ```sh
 make run
 ```
-
-The server will start on `http://localhost:8080`.
-
-## API Endpoints
-
-The server provides the following endpoints for managing people:
-
-| Method | Endpoint         | Description          |
-| ------ | ---------------- | -------------------- |
-| `GET`    | `/people`        | Get all people       |
-| `POST`   | `/people`        | Create a new person  |
-| `GET`    | `/people/:id`    | Get a person by ID   |
-| `PUT`    | `/people/:id`    | Update a person by ID|
-| `DELETE` | `/people/:id`    | Delete a person by ID|
-
 You can use a tool like `curl` or Postman to interact with the API. For example:
-
-```sh
-# Get all people
-curl http://localhost:8080/people
-
-# Create a new person
-curl -X POST http://localhost:8080/people -H "Content-Type: application/json" -d '{"name": "Jane", "age": 25}'
-```
-
-## Development
-
-### Building
-
-To build the application binary, use the following command:
-
-```sh
-make build
-```
-
-This will create an executable file named `go-features-showcase` in the root directory.
-
-### Formatting
-
 To format the code according to Go standards, run:
 
 ```sh
 make fmt
+```
+
+### Linting
+
+This project uses `golangci-lint` for linting. To run the linter, use the following command:
+
+```sh
+make lint
+```
+
+### Testing
+
+To run the tests, use the following command:
+
+```sh
+make test
+```
+
+## Docker
+
+You can also build and run the application using Docker.
+
+### Building the Docker image
+
+To build the Docker image, run the following command:
+
+```sh
+docker build -t go-features-showcase .
+```
+
+### Running the Docker container
+
+To run the Docker container, run the following command:
+
+```sh
+docker run -p 8080:8080 go-features-showcase
 ```
