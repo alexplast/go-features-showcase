@@ -1,6 +1,11 @@
-# Go Hello World - Feature Demonstration
+# 🚀 Go Features Showcase
 
-This project is a Go application designed to demonstrate a wide variety of features of the Go programming language. It serves as a comprehensive example of how to use various libraries and language constructs to build a modern Go application.
+[![Go Version](https://img.shields.io/github/go-mod/go-version/alexplast/go-features-showcase?style=flat-square)](https://go.dev/)
+[![License](https://img.shields.io/github/license/alexplast/go-features-showcase?style=flat-square)](https://opensource.org/licenses/MIT)
+[![Go Report Card](https://goreportcard.com/badge/github.com/alexplast/go-features-showcase?style=flat-square)](https://goreportcard.com/report/github.com/alexplast/go-features-showcase)
+[![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg?style=flat-square)](http://makeapullrequest.com)
+
+This project is a modern Go application designed to demonstrate a wide variety of features of the Go programming language. It serves as a comprehensive boilerplate and example of how to use various libraries and language constructs to build a production-ready REST API.
 
 ## Features
 
@@ -41,7 +46,7 @@ This project demonstrates the following Go features and libraries:
 
 1.  Clone the repository:
     ```sh
-    git clone https://github.com/your-username/go-features-showcase.git
+    git clone https://github.com/alexplast/go-features-showcase.git
     cd go-features-showcase
     ```
 
