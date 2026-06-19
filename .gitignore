@@ -9,3 +9,4 @@ test.db
 .idea
 *.iml
 .vscode
+node_modules

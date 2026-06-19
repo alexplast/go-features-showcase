@@ -2,7 +2,7 @@
 set -e
 
 echo "Starting server in background..."
-go run main.go &
+./go-features-showcase &
 SERVER_PID=$!
 
 # Wait for the server to start
